@@ -62,7 +62,7 @@
   <script>
     function extract() {
 
-      const startUrls = document.getElementById('start-url').value.split('\n');
+      const startUrls = document.getElementById('start-urls').value.split('\n');
       const config = JSON.parse(document.getElementById('config').value);
 
       fetch('/extract', {
