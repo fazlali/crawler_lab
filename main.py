@@ -11,7 +11,7 @@ security = HTTPBasic()
 
 
 def authenticate_user(credentials: HTTPBasicCredentials = Depends(security)):
-    with open('/users.json', 'r') as f:
+    with open('./users.json', 'r') as f:
         users = json.load(f)
     if credentials.username in users:
         password = users[credentials.username]
