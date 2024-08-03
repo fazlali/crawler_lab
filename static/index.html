@@ -77,7 +77,7 @@
         }
         return response.json();
       }).then(({product_urls}) => {
-        document.getElementById('extract-output').innerHTML = JSON.stringify(product_urls.join('<br>'), null, 4);
+        document.getElementById('extract-output').innerHTML = product_urls.join('<br>');
       }).catch(error => {
         document.getElementById('extract-output').innerText = 'Error: ' + error.message;
       });
