@@ -44,8 +44,22 @@ async def extract(request: Request):
     return {'product_urls': product_urls}
 
 
+@app.get("/websites")
+async def extract(request: Request, username=Depends(authenticate_user)):
+    if os.path.exists(f'./db/{username}'):
+        websites = [
+            file
+            for file in os.listdir(f'./db/{username}')
+            if os.path.isfile(f'./db/{username}/{file}') and file.endswith('.json')
+        ]
+    else:
+        websites = []
+
+    return {'websites': websites}
+
+
 @app.post("/websites/{domain}")
-async def extract(request: Request, domain, username=Depends(authenticate_user)):
+async def extract(request: Request, domain: str, username=Depends(authenticate_user)):
     body = await request.json()
     body['domain'] = domain
     if not os.path.exists(f'./db/{username}'):
