@@ -76,8 +76,8 @@
           throw new Error('Network response was not ok');
         }
         return response.json();
-      }).then(data => {
-        document.getElementById('extract-output').innerText = JSON.stringify(data, null, 4);
+      }).then(({product_urls}) => {
+        document.getElementById('extract-output').innerHTML = JSON.stringify(product_urls.join('<br>'), null, 4);
       }).catch(error => {
         document.getElementById('extract-output').innerText = 'Error: ' + error.message;
       });
@@ -97,8 +97,8 @@
           throw new Error('Network response was not ok');
         }
         return response.json();
-      }).then(data => {
-        document.getElementById('scrape-output').innerText = JSON.stringify(data, null, 2);
+      }).then(({product}) => {
+        document.getElementById('scrape-output').innerText = JSON.stringify(product, null, 2);
       }).catch(error => {
         document.getElementById('scrape-output').innerText = 'Error: ' + error.message;
       });
