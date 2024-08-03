@@ -17,4 +17,4 @@ COPY . /app/
 EXPOSE 80
 
 # Command to run the application
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
+CMD python3 -m gunicorn main:app -k uvicorn.workers.UvicornWorker -b 0.0.0.0:80 --workers ${SERVER_WORKERS:-1}

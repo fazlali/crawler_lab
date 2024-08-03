@@ -16,8 +16,9 @@ class BaseExtractor(scrapy.Spider):
     loader_class = ProductLoader
     LIMIT = 100
 
-    def __init__(self, start_urls: list, result: list, extraction_configs: dict = None, limit=LIMIT):
+    def __init__(self, start_urls: list, result: list, extraction_configs: dict = None, limit=LIMIT, **kwargs):
         super().__init__()
+        self.timeout = int(kwargs.pop("timeout", "60"))
         self.start_urls = start_urls
         extraction_configs = extraction_configs or {}
         self.item_counter = iter(range(limit))
@@ -34,6 +35,9 @@ class BaseExtractor(scrapy.Spider):
         self.result = result
 
     def start_requests(self):
+        from twisted.internet import reactor
+        reactor.callLater(self.timeout, self.stop)
+
         for url in self.start_urls:
             yield from self.follow_extraction(url)
 
@@ -66,6 +70,9 @@ class BaseExtractor(scrapy.Spider):
 
         except StopIteration:
             pass
+
+    def stop(self):
+        self.crawler.engine.close_spider(self, "timeout")
 
 
 class SitemapExtractor(BaseExtractor):
