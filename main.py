@@ -31,7 +31,7 @@ app = FastAPI(dependencies=[Depends(authenticate_user)])
 @app.post("/scrape")
 async def scrape(request: Request):
     body = await request.json()
-    return scraper.scrape(body['url'], body['selectors'])
+    return scraper.scrape([body['url']], body['selectors'])[0]
 
 
 @app.post("/extract")
