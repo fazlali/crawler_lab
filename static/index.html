@@ -91,14 +91,14 @@
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ url: url, selectors: selectors })
+        body: JSON.stringify({ urls: [url], selectors: selectors })
       }).then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         return response.json();
-      }).then(({product}) => {
-        document.getElementById('scrape-output').innerText = JSON.stringify(product, null, 2);
+      }).then(({products}) => {
+        document.getElementById('scrape-output').innerText = JSON.stringify(products[0], null, 2);
       }).catch(error => {
         document.getElementById('scrape-output').innerText = 'Error: ' + error.message;
       });
