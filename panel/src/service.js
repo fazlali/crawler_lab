@@ -2,7 +2,7 @@ import axios from 'axios'
 import {ref} from "vue";
 
 const api = axios.create({
-    baseURL: 'api/',
+    baseURL: '/api/',
     headers: {'X-Requested-With': 'XMLHttpRequest'}
 })
 
