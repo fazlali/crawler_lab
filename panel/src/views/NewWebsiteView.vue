@@ -34,8 +34,8 @@ const website = ref({
   }
 })
 
-async function gotoEdit(w) {
-  await router.push({name: 'websites.show', params: {domain: w.domain}})
+async function gotoEdit({website: w}) {
+  await router.push({name: 'websites.edit', params: {domain: w.domain}})
 }
 
 </script>

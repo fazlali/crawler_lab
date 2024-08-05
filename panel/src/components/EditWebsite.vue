@@ -64,7 +64,7 @@ const extractTestResult = ref([])
 
 async function save() {
   const result = await api.saveWebsite(website.value.domain, website.value)
-  emit('save', result.website)
+  emit('save', {website: result.website})
 }
 
 async function extract() {
