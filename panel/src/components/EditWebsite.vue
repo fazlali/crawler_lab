@@ -68,13 +68,19 @@ async function save() {
 }
 
 async function extract() {
+  extractTestResult.value = []
   const result = await api.extract(website.value.extract.start_urls, website.value.extract.config)
   extractTestResult.value = result.product_urls
 }
 
 async function scrape() {
+  scrapeTestResult.value = {}
   const result = await api.scrape([scrapeTestUrl.value], website.value.scrape.selectors)
-  scrapeTestResult.value = result.products[0]
+  if (result.products.length){
+    scrapeTestResult.value = result.products[0]
+  } else {
+    alert('Error while scraping product info')
+  }
 }
 
 async function scrapeTest(url) {
