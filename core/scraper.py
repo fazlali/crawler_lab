@@ -48,7 +48,7 @@ class ProductScraper(scrapy.Spider):
             response = response.replace(body=response.body.decode(encoding, 'replace').encode('utf-8'))
 
         item_loader = self.create_item_loader(selector=response.selector)
-        # item_loader.add_value('scrape_url', response.url)
+        item_loader.add_value('scrape_url', response.url)
         item_loader.add_value('status_code', response.status)
 
         self.selectors.populate_item_loader(item_loader)
