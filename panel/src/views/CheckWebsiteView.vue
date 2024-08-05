@@ -45,6 +45,7 @@ const result = await api.loadWebsite(route.params.domain)
 website.value = result.website
 
 async function startCrawling() {
+  products.value = []
   const {product_urls} = await api.extract(website.value.extract.start_urls, website.value.extract.config)
   const sample_urls = product_urls.map(a => [a,Math.random()])
       .sort((a,b) => {return a[1] < b[1] ? -1 : 1;})
