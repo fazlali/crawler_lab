@@ -14,7 +14,7 @@ from parsel import Selector
 
 class BaseExtractor(scrapy.Spider):
     loader_class = ProductLoader
-    LIMIT = 1000
+    LIMIT = 200
 
     def __init__(self, start_urls: list, result: list, extraction_configs: dict = None, limit=LIMIT, **kwargs):
         super().__init__()
