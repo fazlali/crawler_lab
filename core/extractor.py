@@ -18,7 +18,7 @@ class BaseExtractor(scrapy.Spider):
 
     def __init__(self, start_urls: list, result: list, extraction_configs: dict = None, limit=LIMIT, **kwargs):
         super().__init__()
-        self.timeout = int(kwargs.pop("timeout", "60"))
+        self.timeout = int(kwargs.pop("timeout", "180"))
         self.start_urls = start_urls
         extraction_configs = extraction_configs or {}
         self.item_counter = iter(range(limit))
