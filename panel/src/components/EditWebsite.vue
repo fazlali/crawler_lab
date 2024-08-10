@@ -102,7 +102,7 @@ async function scrapeTest(url) {
             <input
                 class="block w-full rounded-md border-0 py-1.5 px-7 text-gray-900 ring-1 ring-inset ring-gray-300 invalid:ring-red-400"
                 type="text"
-                v-model="website.domain" placeholder="Domain" pattern="^[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*\.[a-zA-Z]{2,}$"
+                v-model="website.domain" placeholder="Domain" pattern="^[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z]{2,}$"
                 required
             >
           </div>
