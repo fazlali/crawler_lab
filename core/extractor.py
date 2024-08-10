@@ -53,7 +53,7 @@ class BaseExtractor(scrapy.Spider):
 
     def check_product_url(self, url=None):
         if self.product_allow:
-            if not all(product_allow.match(url) for product_allow in self.product_allow):
+            if not any(product_allow.match(url) for product_allow in self.product_allow):
                 return
 
         if self.product_deny:
