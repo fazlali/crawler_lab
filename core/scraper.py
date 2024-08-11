@@ -18,7 +18,7 @@ class ProductScraper(scrapy.Spider):
 
     def __init__(self, scrape_urls: list[str], selectors: dict, result: list[dict], **kwargs):
         super().__init__(**kwargs)
-        self.timeout = int(kwargs.pop("timeout", "60"))
+        self.timeout = int(kwargs.pop("timeout", "180"))
         self.scrape_urls = scrape_urls
         self.selectors = Selectors(selectors)
         self.result = result
