@@ -67,7 +67,8 @@ class ProductScraper(scrapy.Spider):
 def _scrape(urls: list, selectors: dict, *args, **kwargs):
     crawler_process = CrawlerProcess({
         'USER_AGENT': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-        'LOG_LEVEL': 'INFO'
+        'LOG_LEVEL': 'INFO',
+        'DOWNLOAD_TIMEOUT': 30
     })
     result = []
     crawler_process.crawl(ProductScraper, urls, selectors, result, *args, **kwargs)

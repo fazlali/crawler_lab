@@ -139,7 +139,8 @@ class CrawlExtractor(BaseExtractor):
 def _extract(start_urls: list, config: dict, *args, **kwargs):
     crawler_process = CrawlerProcess({
         'USER_AGENT': 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
-        'LOG_LEVEL': 'ERROR'
+        'LOG_LEVEL': 'ERROR',
+        'DOWNLOAD_TIMEOUT': 30
     })
     spider = config.get('spider', 'sitemap-extractor')
 
