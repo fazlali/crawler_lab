@@ -89,9 +89,7 @@ async def get_website(request: Request, domain: str, username=Depends(authentica
             }
     return JSONResponse({'website': None}, status_code=404)
 
-app.mount('/', StaticFiles(directory='static', html=True), name='static')
 
-
-@app.exception_handler(404)
-async def fallback_404(request: Request, exc):
+@app.get('/{full_path:path}')
+async def get_panel():
     return FileResponse('static/index.html')
