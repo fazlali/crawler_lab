@@ -79,7 +79,7 @@ async function startCrawling() {
           <span class="border-b border-black w-full h-0 p-1.5"></span>
           <span class="ms-1 cursor-pointer" @click="showWebsiteDetails = !showWebsiteDetails">{{ showWebsiteDetails ? '▼' : '▲' }}</span>
         </div>
-        <edit-website v-if="showWebsiteDetails" :website="website" @save="w => website = w" :test="false"/>
+        <edit-website v-if="showWebsiteDetails" :website="website" @save="({website: updated}) => website = updated" :test="false"/>
       </div>
       <div class="p-2 bg-indigo-100 rounded mb-2">
         <form class="grid grid-cols-[1fr_auto] gap-2" @submit.prevent="startCrawling">
