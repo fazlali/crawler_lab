@@ -91,5 +91,7 @@ async def get_website(request: Request, domain: str, username=Depends(authentica
 
 
 @app.get('/{full_path:path}')
-async def get_panel():
-    return FileResponse('static/index.html')
+async def get_panel(full_path: str):
+    if not os.path.isfile(f'static/{full_path}'):
+        full_path = 'index.html'
+    return FileResponse(f'static/{full_path}')
