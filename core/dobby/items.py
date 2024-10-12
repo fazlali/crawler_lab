@@ -11,7 +11,7 @@ from itemloaders.processors import Compose, MapCompose, TakeFirst, Join, Identit
 
 from w3lib.html import remove_tags, remove_tags_with_content
 
-from .filters import price_filter, sitemap_filter, currency_filter, currency_translate, strip_text
+from .filters import price_filter, sitemap_filter, strip_text
 
 
 class BaseLoader(ItemLoader):
@@ -30,7 +30,7 @@ class ProductLoader(BaseLoader):
     selling_price_in = MapCompose(remove_tags, strip_text, price_filter)
     selling_price_out = Compose(TakeFirst())
 
-    currency_in = MapCompose(remove_tags, strip_text, currency_filter, currency_translate)
+    currency_in = MapCompose(remove_tags, strip_text)
     brand_in = MapCompose(remove_tags, strip_text)
 
     @staticmethod
