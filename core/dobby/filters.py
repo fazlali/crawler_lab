@@ -42,7 +42,7 @@ def price_filter(price: str):
     persian_digits = '۰۱۲۳۴۵۶۷۸۹'
     english_digits = '0123456789'
     # comma, period, thousands separator, decimal separator, space
-    unwanted_characters = ',٬٫ /'
+    unwanted_characters = ',٬٫ /.'
 
     table = str.maketrans(persian_digits, english_digits, unwanted_characters)
     price = price.translate(table)
