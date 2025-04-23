@@ -57,6 +57,13 @@ class ProductScraper(scrapy.Spider):
         if 'image_urls' in item:
             for i in range(len(item['image_urls'])):
                 item['image_urls'][i] = response.urljoin(item['image_urls'][i])
+
+        if "out_of_stock" in item:
+            item["is_in_stock"] = item.get("out_of_stock") is None
+            item.pop("out_of_stock", None)
+        else:
+            item["is_in_stock"] = item.get("price", 0) != 0
+
         self.result.append(item)
         yield item
 

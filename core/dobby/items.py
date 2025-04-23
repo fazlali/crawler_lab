@@ -32,6 +32,8 @@ class ProductLoader(BaseLoader):
 
     currency_in = MapCompose(remove_tags, strip_text)
     brand_in = MapCompose(remove_tags, strip_text)
+    out_of_stock_in = MapCompose(remove_tags, strip_text)
+    out_of_stock_out = Compose(TakeFirst())
 
     @staticmethod
     def image_urls_out(i):

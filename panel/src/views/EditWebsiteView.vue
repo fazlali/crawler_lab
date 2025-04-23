@@ -29,7 +29,8 @@ const website = ref({
         selling_price: [],
         image_urls: [],
         description: [],
-        brand: []
+        brand: [],
+        out_of_stock: []
       }
     }
   }
